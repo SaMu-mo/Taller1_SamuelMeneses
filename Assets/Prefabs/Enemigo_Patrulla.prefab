@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6174427491827489236}
   - component: {fileID: 178860665791273160}
   - component: {fileID: 6488104341878428714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemigo_Patrulla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,6 @@ MonoBehaviour:
   groundCheck: {fileID: 1854672863993326653}
   groundDistance: 0.5
   wallDistance: 0.5
-  wallCheckHeight: 0.4
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -197,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1854672863993326653}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
