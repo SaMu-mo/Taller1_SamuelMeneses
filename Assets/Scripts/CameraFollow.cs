@@ -6,6 +6,13 @@ public class CameraFollow : MonoBehaviour
     public Vector3 offset = new Vector3(0f, 2f, -10f);
     public float smoothSpeed = 5f;
 
+    private Vector3 followPosition;
+
+    void Start()
+    {
+        followPosition = transform.position;
+    }
+
     void LateUpdate()
     {
         if (target == null)
@@ -14,6 +21,14 @@ public class CameraFollow : MonoBehaviour
         }
 
         Vector3 desiredPosition = target.position + offset;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        followPosition = Vector3.Lerp(followPosition, desiredPosition, smoothSpeed * Time.deltaTime);
+
+        Vector3 shake = Vector3.zero;
+        if (CameraShake.Instance != null)
+        {
+            shake = CameraShake.Instance.ShakeOffset;
+        }
+
+        transform.position = followPosition + shake;
     }
 }

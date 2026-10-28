@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 8f;
 
+    public GameObject polvoSaltoPrefabs;
+
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -34,6 +36,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            if (polvoSaltoPrefabs != null)
+            {
+                Instantiate(polvoSaltoPrefabs, transform.position, Quaternion.identity);
+            }
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.ReproducirSfx(AudioManager.Instance.sfxSalto);
+            }
         }
 
         animator.SetFloat("Speed", Mathf.Abs(moveInput));
